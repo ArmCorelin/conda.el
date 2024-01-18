@@ -8,7 +8,7 @@ Tnanks for necaris original version of conda.el, we can use conda command in Ema
 But I found some issues and I try to fix it.
 
 * Now conda command needs some more environment Variables manipulation.
-  Such as 'unset' or 'set' command to deactivate it propery.
+  Such as 'unset' or 'set' command to deactivate it properly.
   
 (I found other issues but I don't touch them now.)
 

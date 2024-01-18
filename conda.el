@@ -452,6 +452,15 @@ Returns a list of new path elements."
 
 ;; potentially interactive user-exposed functions
 
+(defun conda-restart-lsp ()
+  "Restart lsp if it's active"
+  (when (member 'lsp-mode minor-mode-list)
+    (if (and (fboundp 'lsp-workspace-restart) (fboundp 'lsp--read-workspace))
+	(let ((workspace (lsp--read-workspace)))
+	  (lsp-workspace-restart workspace))
+
+    (lsp-workspace-restart()))))
+
 ;;;###autoload
 (defun conda-env-deactivate ()
   "Deactivate the current conda env."
@@ -473,6 +482,7 @@ Returns a list of new path elements."
     (setq eshell-path-env (getenv "PATH"))
     (conda--set-system-gud-pdb-command-name)
     (run-hooks 'conda-postdeactivate-hook)
+    (conda-restart-lsp)
     (when (called-interactively-p 'interactive)
       (message "conda env deactivated"))))
 
@@ -482,7 +492,8 @@ Returns a list of new path elements."
   (interactive)
   (let* ((env-name (or name (conda--read-env-name)))
          (env-dir (conda-env-name-to-dir env-name)))
-    (conda-env-activate-path env-dir)))
+    (conda-env-activate-path env-dir))
+  (conda-restart-lsp))
 
 ;;;###autoload
 (defun conda-env-activate-path (&optional path)
