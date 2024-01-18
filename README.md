@@ -17,8 +17,11 @@ Now you can deactivate in your shell in emacs even Vterm.
 Please find original Documents to use.
 [README is here](https://github.com/ArmCorelin/conda.el/blob/main/README.md "https://github.com/ArmCorelin/conda.el/blob/main/README.md").
 
-
 enjoy!
 
 X account: https://twitter.com/ARMcoreLinux
 
+## Change-log
+
+240119 Added automatic lsp restart when (de)activate envs.
+       Now lsp-mode follows your current environment.
