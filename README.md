@@ -25,4 +25,5 @@ X account: https://twitter.com/ARMcoreLinux
 
 240119 Added automatic lsp restart when (de)activate envs.
        Now lsp-mode follows your current environment.
+
 240131 Changed 2nd parameter for setenv, '' to nil
